@@ -8,7 +8,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"go.k6.io/k6/js/modules"
+	"go.k6.io/k6/v2/js/modules"
 )
 
 func init() {
@@ -68,7 +68,7 @@ func (e *EXEC) Command(name string, args []string, option CommandOptions) (strin
 		err error
 	)
 
-	cmd := exec.CommandContext(e.vu.Context(), name, args...)
+	cmd := exec.CommandContext(e.vu.Context(), name, args...) // #nosec G204
 	if option.Dir != "" {
 		cmd.Dir = option.Dir
 	}
